@@ -84,7 +84,7 @@ Carbon SDK is the part of Carbon Framework that builds cross-platform mobile app
 
 Carbon apps don't preview well in a normal web browser. Instead, use the **Carbon Previewer App**.
 
-1. Install the Carbon Previewer app [CarbonPreviewer.apk]() on your Android device 
+1. Install the Carbon Previewer app [Carbon Framework Previewer.apk](https://github.com/Abdur-Nur-Porag/CarbonFramework_SDK/releases/download/cp-v1.0.0/CarbonFrame_Preview.apk) on your Android device 
 2. Open the app.
 3. Enter your dev server URL. The default is:
    ```
