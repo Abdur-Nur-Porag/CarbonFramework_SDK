@@ -1,5 +1,7 @@
 # Alert
 Alert components provide standard Material Design 3 dialogs for alerts, confirmations, user input, and fully custom blank dialogs.
+## Important
+Alert Does not need any router support. Because this automatically handle by router. Router doesnot provide extra api for it. So use diractly `Alert(),ConfirmAlert() and others`
 
 ## Use Example
 ```js

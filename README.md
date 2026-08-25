@@ -84,7 +84,7 @@ Carbon SDK is the part of Carbon Framework that builds cross-platform mobile app
 
 Carbon apps don't preview well in a normal web browser. Instead, use the **Carbon Previewer App**.
 
-1. Install the Carbon Previewer app (`CarbonPreviewer.apk`) on your Android device.
+1. Install the Carbon Previewer app [CarbonPreviewer.apk]() on your Android device 
 2. Open the app.
 3. Enter your dev server URL. The default is:
    ```
@@ -97,63 +97,7 @@ Carbon apps don't preview well in a normal web browser. Instead, use the **Carbo
 
 ## Building an APK
 
-To publish a real, production-ready app, you need two more steps after your app is finished.
-
-### Step 1: Install App Config
-
-Run this first. It generates your bundled `index.html` file.
-
-```bash
-npm run build
-```
-
-Then run:
-
-```bash
-node CarbonCliSdk --install-android <com.company.name> <your-secret-key>
-```
-
-This creates a new `Android` folder in your project. It looks like this:
-
-```
-Android/
-├── java/
-│   ├── MainActivity.java
-│   ├── MainRender.java
-│   ├── BaseBridge.java
-│   ├── BridgeHandler.java
-│   └── CoreBridges/
-│       ├── CoreBridges.java
-│       └── FileUtilsBridges.java
-├── Carbon/
-│   └── Carbon.main.bundle
-├── AndroidPermission.json
-└── AndroidConfig.json
-
-build/
-```
-
-**What these files do:**
-
-| File | Purpose |
-|------|---------|
-| `Carbon.main.bundle` | Your app's code, encrypted |
-| `AndroidPermission.json` | Edit this to set Android manifest permissions |
-| `AndroidConfig.json` | Edit this to set SDK version, minimum SDK, theme, status bar color, and more |
-
-### Step 2: Build the APK
-
-```bash
-node CarbonCliSdk --build-android
-```
-
-This creates a `.zip` file in the `build` folder.
-
-To turn that zip into an actual APK:
-
-1. Install **Android Studio**.
-2. Open the zip file as a project in Android Studio. It's already set up, so you don't need to configure anything.
-3. You *can* edit the project manually if you want — just note that this is unsupported and done at your own risk.
+Read [CarbonCliSdk](CarbonCliSdk.md) For Building process.
 
 ---
 
@@ -195,6 +139,41 @@ Before you start with Carbon Framework, it helps to know:
 4. **The `/Example` folder** — a good place to see real usage
 5. **The Carbon build structure** — three config files: `Carbon.build`, `Carbon.package`, and `Carbon.main`
 
+## How To Start
+Here is tutorial series serially. Read that.
+1. Core Component
+	1. [Drawer](Example/Drawer/md/Drawer.md)
+	2. [ActionSheet](Example/ActionSheet/md/ActionSheet.md)
+	3. [DialogSheet](Example/DialogSheet/md/DialogSheet.md)
+	4. [Alert](Example/Alert/md/Alert.md)
+	5. [Router](Example/Router/md/Router.md)
+	6. [PageView](Example/PageView/md/PageView.md)
+	7. [Main](Example/Main/md/Main.md)
+	8. [Core JavaScript](Example/Core_JavaScript/Core_JavaScript)
+2. Android Api
+	1. [Android Api](Example/Android/md/Bridges.md)
+3. Extra Components
+	1. [Accordion](Example/Accordion/md/Accordion.md)
+	2. [CodeHighlighter](Example/CodeHighlighter/md/CodeHighlighter.md)
+	3. [Divider](Example/Divider/md/Divider.md)
+	4. [Fab](Example/Fab/md/Fab.md)
+	5. [Layout](Example/Layout/md/Layout.md)
+	6. [GridView](Example/GridView/md/GridView)
+	7. [Gesture](Example/Gesture/md/Gesture.md)
+	8. [NativeButton](Example/NativeButton/md/NativeButton.md)
+	9. [NativeToast](Example/NativeToast/md/NativeToast.md)
+	10. [Scroll](Example/Scroll/md/Scroll.md)
+	11. [Svg](Example/Svg/md/Svg.md)
+	12. [Themes](Example/Themes/md/Themes)
+4. Canvas
+	1. [PixelGrid](Example/PixelGrid/md/PixelGrid)
+5. Utility
+	1. [DatePicker](Example/DatePicker/md/DatePicker.md)
+	2. [TimePicker](Example/TimePicker/md/TimePicker.md)
+	3. [Select](Example/Select/md/Select.md)
+6. Jsx Component 
+	1. [Switch](Example/Component/md/Switch.md)
+	2. [ListItem](Example/Component/md/ListItem)
 ---
 
 ## FAQ

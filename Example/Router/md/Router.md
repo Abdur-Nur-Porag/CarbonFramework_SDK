@@ -82,6 +82,16 @@ Opening a page automatically closes any open Drawer/ActionSheet/DialogSheet
 first (handled by Carbon), and Router prunes their now-stale stack entries.
 
 ---
+### Important 
+#### InitialPageView
+This is a important things that developers must know. There is a logic 
+`if(InitialPageView.value==_CurrentPageView)` app will kill.
+So if you want to change initial pageview use 
+```js
+InitialPageView.value = "pageview_"+"name";
+```
+This is `ref` name of Vue you can change it any time dynamically.
+
 
 ## 2. Drawer
 

@@ -12,6 +12,8 @@ Add both scripts to your project, in this order. They are plain scripts — the 
 ```
 
 `bridge_core.js` sets up the internal Promise registry. `android_shim.js` builds `window.Android` on top of it. Always load `bridge_core.js` first.
+### Important 
+If you are using `Carbon Framework` bridge_core and android_shim are part of `Carbon.build` so `import` or `use <script src=""></>` are not required. 
 
 ## How a call works
 
