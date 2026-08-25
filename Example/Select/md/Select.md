@@ -83,12 +83,10 @@ CarbonSelect.<method>
 ---
 ## Important
 If you are making `Android App` you must using Router.
-Proper Documention in [Example/Router](Example/Router/md/Router.md)
-Do not use this trigger to open and close or backdrop which is described in this file. Because this file example and providing trigger are non router. So, when you are making android app you must need router. So Read [Example/Router](Example/Router/md/Router.md)
+Proper Documention in [Example/Router](../../Router/md/Router.md)
+
+Do not use this trigger to open and close or backdrop which is described in this file. Because this file example and providing trigger are non router. So, when you are making android app you must need router. So Read [Example/Router](../../Router/md/Router.md)
 then use.
-
-Router Automatic handel Open and Close of `Select,DatePicker,TimePicker`
-
 ## Event Callbacks
 
 Callbacks can be registered **per-picker** (by name) or **globally** (fires for all pickers).

@@ -20,9 +20,9 @@ ActionSheet is a prebuilt component for CarbonFramework that follows standard `M
 
 ## Important
 If you are making `Android App` you must using Router.
-Proper Documention in [Example/Router](Example/Router.md)
+Proper Documention in [Example/Router](../../Router/md/Router.md)
 
-Do not use this trigger to open and close or backdrop which is described in this file. Because this file example and providing trigger are non router. So, when you are making android app you must need router. So Read [Example/Router](Example/Router.md)
+Do not use this trigger to open and close or backdrop which is described in this file. Because this file example and providing trigger are non router. So, when you are making android app you must need router. So Read [Example/Router](../../Router/md/Router.md)
 then use.
 ## Javascript Api
 If you are using WebSdk you can use this opening and close.
