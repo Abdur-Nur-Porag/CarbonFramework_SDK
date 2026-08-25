@@ -1,0 +1,670 @@
+{
+  "Build": {
+    "Engine": {
+      "ZIndex": {
+        "Style": {
+          "files": [
+            {
+              "name": "ZIndex.css",
+              "path": "Engine/ZIndex/Style",
+              "filePath": "Engine/ZIndex/Style/ZIndex.css"
+            }
+          ]
+        }
+      },
+      "Core": {
+        "files": [
+          {
+            "name": "Carbon.BuildApi.js",
+            "path": "Engine/Core",
+            "filePath": "Engine/Core/Carbon.BuildApi.js"
+          },
+          {
+            "name": "Carbon.GlobalFunction.js",
+            "path": "Engine/Core",
+            "filePath": "Engine/Core/Carbon.GlobalFunction.js"
+          },
+          {
+            "name": "Carbon.Optimizer.js",
+            "path": "Engine/Core",
+            "filePath": "Engine/Core/Carbon.Optimizer.js"
+          },
+          {
+            "name": "Carbon.Protection.js",
+            "path": "Engine/Core",
+            "filePath": "Engine/Core/Carbon.Protection.js"
+          },
+          {
+            "name": "vue.global.prod.js",
+            "path": "Engine/Core",
+            "filePath": "Engine/Core/vue.global.prod.js"
+          },
+          {
+            "name": "Carbon.BarSpacer.js",
+            "path": "Engine/Core",
+            "filePath": "Engine/Core/Carbon.BarSpacer.js"
+          }
+        ],
+        "Android": {
+          "files": [
+            {
+              "name": "bridge_core.js",
+              "path": "Engine/Core/Android",
+              "filePath": "Engine/Core/Android/bridge_core.js"
+            },
+            {
+              "name": "android_shim.js",
+              "path": "Engine/Core/Android",
+              "filePath": "Engine/Core/Android/android_shim.js"
+            }
+          ]
+        }
+      },
+      "Debug": {
+        "files": [
+          {
+            "name": "Carbon.Debug.js",
+            "path": "Engine/Debug",
+            "filePath": "Engine/Debug/Carbon.Debug.js"
+          }
+        ]
+      },
+      "Prebuilt": {
+        "GridView": {
+          "Script": {
+            "files": [
+              {
+                "name": "GridView.js",
+                "path": "Engine/Prebuilt/GridView/Script",
+                "filePath": "Engine/Prebuilt/GridView/Script/GridView.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "GridView.css",
+                "path": "Engine/Prebuilt/GridView/Style",
+                "filePath": "Engine/Prebuilt/GridView/Style/GridView.css"
+              }
+            ]
+          }
+        },
+        "NativeToast": {
+          "Script": {
+            "files": [
+              {
+                "name": "NativeToast.js",
+                "path": "Engine/Prebuilt/NativeToast/Script",
+                "filePath": "Engine/Prebuilt/NativeToast/Script/NativeToast.js"
+              }
+            ]
+          }
+        },
+        "PageView": {
+          "Script": {
+            "files": [
+              {
+                "name": "PageView.js",
+                "path": "Engine/Prebuilt/PageView/Script",
+                "filePath": "Engine/Prebuilt/PageView/Script/PageView.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "PageView.css",
+                "path": "Engine/Prebuilt/PageView/Style",
+                "filePath": "Engine/Prebuilt/PageView/Style/PageView.css"
+              }
+            ]
+          }
+        },
+        "DatePicker": {
+          "Script": {
+            "files": [
+              {
+                "name": "DatePicker.js",
+                "path": "Engine/Prebuilt/DatePicker/Script",
+                "filePath": "Engine/Prebuilt/DatePicker/Script/DatePicker.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "DatePicker.css",
+                "path": "Engine/Prebuilt/DatePicker/Style",
+                "filePath": "Engine/Prebuilt/DatePicker/Style/DatePicker.css"
+              }
+            ]
+          }
+        },
+        "Select": {
+          "Script": {
+            "files": [
+              {
+                "name": "Select.js",
+                "path": "Engine/Prebuilt/Select/Script",
+                "filePath": "Engine/Prebuilt/Select/Script/Select.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Select.css",
+                "path": "Engine/Prebuilt/Select/Style",
+                "filePath": "Engine/Prebuilt/Select/Style/Select.css"
+              }
+            ]
+          }
+        },
+        "TimePicker": {
+          "Script": {
+            "files": [
+              {
+                "name": "TimePicker.js",
+                "path": "Engine/Prebuilt/TimePicker/Script",
+                "filePath": "Engine/Prebuilt/TimePicker/Script/TimePicker.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "TimePicker.css",
+                "path": "Engine/Prebuilt/TimePicker/Style",
+                "filePath": "Engine/Prebuilt/TimePicker/Style/TimePicker.css"
+              }
+            ]
+          }
+        },
+        "Elasticity": {
+          "Script": {
+            "files": [
+              {
+                "name": "Elasticity.js",
+                "path": "Engine/Prebuilt/Elasticity/Script",
+                "filePath": "Engine/Prebuilt/Elasticity/Script/Elasticity.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Elasticity.css",
+                "path": "Engine/Prebuilt/Elasticity/Style",
+                "filePath": "Engine/Prebuilt/Elasticity/Style/Elasticity.css"
+              }
+            ]
+          }
+        },
+        "Gesture": {
+          "Script": {
+            "files": [
+              {
+                "name": "gesture.js",
+                "path": "Engine/Prebuilt/Gesture/Script",
+                "filePath": "Engine/Prebuilt/Gesture/Script/gesture.js"
+              }
+            ]
+          }
+        },
+        "Layout": {
+          "Style": {
+            "files": [
+              {
+                "name": "Layout.css",
+                "path": "Engine/Prebuilt/Layout/Style",
+                "filePath": "Engine/Prebuilt/Layout/Style/Layout.css"
+              }
+            ]
+          },
+          "Script": {
+            "files": [
+              {
+                "name": "Layout.js",
+                "path": "Engine/Prebuilt/Layout/Script",
+                "filePath": "Engine/Prebuilt/Layout/Script/Layout.js"
+              }
+            ]
+          }
+        },
+        "Scroll": {
+          "Script": {
+            "files": [
+              {
+                "name": "Scroll.js",
+                "path": "Engine/Prebuilt/Scroll/Script",
+                "filePath": "Engine/Prebuilt/Scroll/Script/Scroll.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Scroll.css",
+                "path": "Engine/Prebuilt/Scroll/Style",
+                "filePath": "Engine/Prebuilt/Scroll/Style/Scroll.css"
+              }
+            ]
+          }
+        },
+        "ActionSheet": {
+          "Script": {
+            "files": [
+              {
+                "name": "ActionSheet.js",
+                "path": "Engine/Prebuilt/ActionSheet/Script",
+                "filePath": "Engine/Prebuilt/ActionSheet/Script/ActionSheet.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "ActionSheet.css",
+                "path": "Engine/Prebuilt/ActionSheet/Style",
+                "filePath": "Engine/Prebuilt/ActionSheet/Style/ActionSheet.css"
+              }
+            ]
+          }
+        },
+        "Drawer": {
+          "Script": {
+            "files": [
+              {
+                "name": "Drawer.js",
+                "path": "Engine/Prebuilt/Drawer/Script",
+                "filePath": "Engine/Prebuilt/Drawer/Script/Drawer.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Drawer.css",
+                "path": "Engine/Prebuilt/Drawer/Style",
+                "filePath": "Engine/Prebuilt/Drawer/Style/Drawer.css"
+              }
+            ]
+          }
+        },
+        "Alert": {
+          "Script": {
+            "files": [
+              {
+                "name": "Alert.js",
+                "path": "Engine/Prebuilt/Alert/Script",
+                "filePath": "Engine/Prebuilt/Alert/Script/Alert.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Alert.css",
+                "path": "Engine/Prebuilt/Alert/Style",
+                "filePath": "Engine/Prebuilt/Alert/Style/Alert.css"
+              }
+            ]
+          }
+        },
+        "Fab": {
+          "Script": {
+            "files": [
+              {
+                "name": "Fab.js",
+                "path": "Engine/Prebuilt/Fab/Script",
+                "filePath": "Engine/Prebuilt/Fab/Script/Fab.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Fab.css",
+                "path": "Engine/Prebuilt/Fab/Style",
+                "filePath": "Engine/Prebuilt/Fab/Style/Fab.css"
+              }
+            ]
+          }
+        },
+        "Prism": {
+          "Script": {
+            "files": [
+              {
+                "name": "Prism.js",
+                "path": "Engine/Prebuilt/Prism/Script",
+                "filePath": "Engine/Prebuilt/Prism/Script/Prism.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Prism.css",
+                "path": "Engine/Prebuilt/Prism/Style",
+                "filePath": "Engine/Prebuilt/Prism/Style/Prism.css"
+              }
+            ]
+          }
+        },
+        "CodeHighlighter": {
+          "Script": {
+            "files": [
+              {
+                "name": "CodeHighlighter.js",
+                "path": "Engine/Prebuilt/CodeHighlighter/Script",
+                "filePath": "Engine/Prebuilt/CodeHighlighter/Script/CodeHighlighter.js"
+              }
+            ]
+          }
+        },
+        "Svg": {
+          "Script": {
+            "files": [
+              {
+                "name": "Svg.js",
+                "path": "Engine/Prebuilt/Svg/Script",
+                "filePath": "Engine/Prebuilt/Svg/Script/Svg.js"
+              }
+            ]
+          }
+        },
+        "Divider": {
+          "Style": {
+            "files": [
+              {
+                "name": "Divider.css",
+                "path": "Engine/Prebuilt/Divider/Style",
+                "filePath": "Engine/Prebuilt/Divider/Style/Divider.css"
+              }
+            ]
+          }
+        },
+        "Accordion": {
+          "Script": {
+            "files": [
+              {
+                "name": "Accordion.js",
+                "path": "Engine/Prebuilt/Accordion/Script",
+                "filePath": "Engine/Prebuilt/Accordion/Script/Accordion.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "Accordion.css",
+                "path": "Engine/Prebuilt/Accordion/Style",
+                "filePath": "Engine/Prebuilt/Accordion/Style/Accordion.css"
+              }
+            ]
+          }
+        },
+        "Stretch": {
+          "Script": {
+            "files": [
+              {
+                "name": "Stretch.js",
+                "path": "Engine/Prebuilt/Stretch/Script",
+                "filePath": "Engine/Prebuilt/Stretch/Script/Stretch.js"
+              }
+            ]
+          }
+        },
+        "DialogSheet": {
+          "Script": {
+            "files": [
+              {
+                "name": "DialogSheet.js",
+                "path": "Engine/Prebuilt/DialogSheet/Script",
+                "filePath": "Engine/Prebuilt/DialogSheet/Script/DialogSheet.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "DialogSheet.css",
+                "path": "Engine/Prebuilt/DialogSheet/Style",
+                "filePath": "Engine/Prebuilt/DialogSheet/Style/DialogSheet.css"
+              }
+            ]
+          }
+        },
+        "NativeButton": {
+          "Script": {
+            "files": [
+              {
+                "name": "NativeButton.js",
+                "path": "Engine/Prebuilt/NativeButton/Script",
+                "filePath": "Engine/Prebuilt/NativeButton/Script/NativeButton.js"
+              }
+            ]
+          },
+          "Style": {
+            "files": [
+              {
+                "name": "NativeButton.css",
+                "path": "Engine/Prebuilt/NativeButton/Style",
+                "filePath": "Engine/Prebuilt/NativeButton/Style/NativeButton.css"
+              }
+            ]
+          }
+        },
+        "Router": {
+          "Script": {
+            "files": [
+              {
+                "name": "Router.js",
+                "path": "Engine/Prebuilt/Router/Script",
+                "filePath": "Engine/Prebuilt/Router/Script/Router.js"
+              }
+            ]
+          }
+        }
+      },
+      "Style": {
+        "files": [
+          {
+            "name": "Carbon.Style.css",
+            "path": "Engine/Style",
+            "filePath": "Engine/Style/Carbon.Style.css"
+          },
+          {
+            "name": "material-icons-embedded.css",
+            "path": "Engine/Style",
+            "filePath": "Engine/Style/material-icons-embedded.css"
+          },
+          {
+            "name": "Carbon.Extra.Style.css",
+            "path": "Engine/Style",
+            "filePath": "Engine/Style/Carbon.Extra.Style.css"
+          },
+          {
+            "name": "Carbon.Protection.css",
+            "path": "Engine/Style",
+            "filePath": "Engine/Style/Carbon.Protection.css"
+          },
+          {
+            "name": "Com.ListItem.css",
+            "path": "Engine/Style",
+            "filePath": "Engine/Style/Com.ListItem.css"
+          }
+        ]
+      },
+      "Themes": {
+        "files": [
+          {
+            "name": "Carbon.Themes.js",
+            "path": "Engine/Themes",
+            "filePath": "Engine/Themes/Carbon.Themes.js"
+          }
+        ]
+      }
+    }
+  },
+  "Package": {
+    "Package": {
+      "Script": {
+        "Carbon.MaterialDesign": {
+          "files": [
+            {
+              "name": "Carbon.MaterialDesign.js",
+              "path": "Package/Script/Carbon.MaterialDesign",
+              "filePath": "Package/Script/Carbon.MaterialDesign/Carbon.MaterialDesign.js"
+            }
+          ]
+        },
+        "Carbon.Fetch": {
+          "files": [
+            {
+              "name": "Carbon.Fetch.js",
+              "path": "Package/Script/Carbon.Fetch",
+              "filePath": "Package/Script/Carbon.Fetch/Carbon.Fetch.js"
+            }
+          ]
+        },
+        "Carbon.IndexedDb": {
+          "files": [
+            {
+              "name": "Carbon.IndexedDb.js",
+              "path": "Package/Script/Carbon.IndexedDb",
+              "filePath": "Package/Script/Carbon.IndexedDb/Carbon.IndexedDb.js"
+            }
+          ]
+        }
+      },
+      "Style": {
+        "Carbon.MaterialDesign": {
+          "files": [
+            {
+              "name": "Carbon.MaterialDesign.css",
+              "path": "Package/Style/Carbon.MaterialDesign",
+              "filePath": "Package/Style/Carbon.MaterialDesign/Carbon.MaterialDesign.css"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Main": {
+    "Main": {
+      "PreScript": {
+        "files": [
+          {
+            "name": "Themes.js",
+            "path": "Main/PreScript",
+            "filePath": "Main/PreScript/Themes.js"
+          }
+        ]
+      },
+      "Script": {
+        "files": [
+          {
+            "name": "HomeView.js",
+            "path": "Main/Script",
+            "filePath": "Main/Script/HomeView.js"
+          },
+          {
+            "name": "AppView.js",
+            "path": "Main/Script",
+            "filePath": "Main/Script/AppView.js"
+          },
+          {
+            "name": "SettingsView.js",
+            "path": "Main/Script",
+            "filePath": "Main/Script/SettingsView.js"
+          }
+        ]
+      },
+      "Style": {
+        "files": [
+          {
+            "name": "MainStyle.css",
+            "path": "Main/Style",
+            "filePath": "Main/Style/MainStyle.css"
+          }
+        ]
+      },
+      "Themes": {
+        "files": [
+          {
+            "name": "Carbon.Material.Themes.js",
+            "path": "Main/Themes",
+            "filePath": "Main/Themes/Carbon.Material.Themes.js"
+          }
+        ]
+      },
+      "Views": {
+        "files": [
+          {
+            "name": "AppView.jsx",
+            "path": "Main/Views",
+            "filePath": "Main/Views/AppView.jsx"
+          },
+          {
+            "name": "HomeView.jsx",
+            "path": "Main/Views",
+            "filePath": "Main/Views/HomeView.jsx"
+          },
+          {
+            "name": "SettingsView.jsx",
+            "path": "Main/Views",
+            "filePath": "Main/Views/SettingsView.jsx"
+          }
+        ],
+        "Com": {
+          "files": [
+            {
+              "name": "NativeButton.jsx",
+              "path": "Main/Views/Com",
+              "filePath": "Main/Views/Com/NativeButton.jsx"
+            },
+            {
+              "name": "List.jsx",
+              "path": "Main/Views/Com",
+              "filePath": "Main/Views/Com/List.jsx"
+            },
+            {
+              "name": "Switch.jsx",
+              "path": "Main/Views/Com",
+              "filePath": "Main/Views/Com/Switch.jsx"
+            }
+          ]
+        }
+      },
+      "PostScript": {
+        "files": [
+          {
+            "name": "PixelGrid.js",
+            "path": "Main/PostScript",
+            "filePath": "Main/PostScript/PixelGrid.js"
+          }
+        ]
+      },
+      "BottomScript": {
+        "files": [
+          {
+            "name": "bottom.js",
+            "path": "Main/BottomScript",
+            "filePath": "Main/BottomScript/bottom.js"
+          }
+        ]
+      },
+      "TopScript": {
+        "files": [
+          {
+            "name": "top.js",
+            "path": "Main/TopScript",
+            "filePath": "Main/TopScript/top.js"
+          }
+        ]
+      }
+    }
+  }
+}

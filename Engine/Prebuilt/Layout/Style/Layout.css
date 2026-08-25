@@ -1,0 +1,42 @@
+/* Base styles: All fill their parent containers */
+        vcenter, vtop, vbottom, 
+        hleft, hcenter, hright, hbottom, 
+        hscroll, vscroll {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            position: relative; 
+        }
+
+        /* --- Vertical Alignment (Stacks items top-to-bottom) --- */
+        vcenter, vtop, vbottom {
+            flex-direction: column;
+            align-items: center; /* Centers horizontally by default */
+        }
+        vtop    { justify-content: flex-start; }
+        vcenter { justify-content: center; }
+        vbottom { justify-content: flex-end; }
+
+        /* --- Horizontal Alignment (Places items side-by-side) --- */
+        hleft, hcenter, hright, hbottom {
+            flex-direction: row;
+            align-items: center; /* Centers vertically by default */
+        }
+        hleft   { justify-content: flex-start; }
+        hcenter { justify-content: center; }
+        hright  { justify-content: flex-end; } /* Aligns items to the right */
+        hbottom { justify-content: center; align-items: flex-end; } /* Bottom row */
+
+        /* --- Scroll Containers --- */
+        hscroll {
+            display: block; 
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap; 
+        }
+        vscroll {
+            display: block;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }

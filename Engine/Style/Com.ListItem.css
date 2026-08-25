@@ -1,0 +1,15 @@
+/* Base transition for smooth color fading */
+.android-list-interactive {
+  background-color: transparent; /* Or #ffffff */
+  transition: background-color 0.15s ease-in-out;
+}
+
+/* Hover state - subtle grey (Material standard is 4% opacity black) */
+.android-list-interactive:hover {
+  background-color: var(--surface) !important;
+}
+
+/* Active state - simulates the touch/ripple effect (Material standard is 12% opacity black) */
+.android-list-interactive:active {
+  background-color: var(--surface)!important;
+}

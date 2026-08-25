@@ -1,0 +1,197 @@
+/* ── Z-Index (Engine/ZIndex/Style/ZIndex.css) ──
+   DatePicker is mounted through the shared DialogSheet overlay/wrapper,
+   which by default paints its content at --dialogsheet-zindex. That is
+   too low for a field-triggered picker that may itself live inside a
+   Drawer/ActionSheet/DialogSheet, so its ds-wrapper is re-targeted here
+   to DatePicker's own tier (--datepicker-zindex). The extra `.active`
+   selector matches the specificity of DialogSheet.css's own
+   `.ds-wrapper.active` rule so this override always wins regardless of
+   CSS load order. */
+.ds-wrapper:has(.calendar-content) {
+  z-index: var(--datepicker-zindex, 9999);
+}
+.ds-wrapper.active:has(.calendar-content) {
+  z-index: var(--datepicker-zindex, 9999);
+}
+
+/* ── Calendar Layout ── */
+.calendar-content {
+  min-height: 300px;
+  margin-top: 10px;
+  overflow: hidden;
+  touch-action: pan-y;
+  position: relative;
+}
+
+/* ── Calendar Grid ── */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.calendar-grid .weekday {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.calendar-day {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.calendar-day:hover:not(.empty) {
+  background: rgba(var(--primary-rgb), 0.1);
+}
+
+.calendar-day.today {
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.calendar-day.selected-date {
+  background: var(--primary) !important;
+  color: var(--on-primary) !important;
+}
+
+/* ── Year / Month Selection List ── */
+.selection-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  padding: 5px 0;
+}
+
+.selection-item {
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin: 2px 10px;
+}
+
+.selection-item:hover {
+  background: rgba(var(--primary-rgb), 0.08);
+}
+
+.selection-item.current-item-text {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.selection-item.selected-item {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Footer Layout ── */
+.calendar-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.calendar-footer .footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-footer .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Slide Animations (month navigation) ── */
+.calendar-content.slide-exit-left  { animation: cdpExitLeft  0.16s ease-in  forwards; }
+.calendar-content.slide-exit-right { animation: cdpExitRight 0.16s ease-in  forwards; }
+.calendar-content.slide-enter-left  { animation: cdpEnterLeft  0.22s ease-out forwards; }
+.calendar-content.slide-enter-right { animation: cdpEnterRight 0.22s ease-out forwards; }
+
+@keyframes cdpExitLeft {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(-24px); opacity: 0; }
+}
+@keyframes cdpExitRight {
+  from { transform: translateX(0);   opacity: 1; }
+  to   { transform: translateX(24px); opacity: 0; }
+}
+@keyframes cdpEnterLeft {
+  from { transform: translateX(-24px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes cdpEnterRight {
+  from { transform: translateX(24px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Manual Date Entry ── */
+.manual-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+}
+
+.manual-hint {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.manual-input-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.manual-input {
+  width: 56px;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px 4px;
+  border: none;
+  border-bottom: 2px solid rgba(var(--primary-rgb), 0.4);
+  background: transparent;
+  color: inherit;
+  outline: none;
+}
+
+.manual-input:focus {
+  border-bottom-color: var(--primary);
+}
+
+.manual-input-year {
+  width: 78px;
+}
+
+.manual-sep {
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+.manual-error {
+  min-height: 1.2em;
+  font-size: 0.8rem;
+  color: var(--error, #b3261e);
+}

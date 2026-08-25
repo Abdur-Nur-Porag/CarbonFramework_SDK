@@ -1,0 +1,84 @@
+/* =========================================================
+   CARBON :: Z-INDEX TOKENS
+   ---------------------------------------------------------
+   Single source of truth for every stacking value used across
+   Engine/Prebuilt/*. Every component reads its number from here
+   via var(--xxx-zindex, fallback) instead of hard-coding it, so
+   the whole app's paint order can be reasoned about from one file.
+
+   LOAD ORDER DOES NOT MATTER for these variables (they're resolved
+   at used-value time, not textually), but this file is registered
+   first in Carbon.build for readability. Every consumer still
+   ships a hard fallback (var(--x, 9999)) matching its old value,
+   so nothing breaks if this file is ever missing from a build.
+
+   ---------------------------------------------------------
+   LAYER MAP (low -> high)
+   ---------------------------------------------------------
+   0.   Page chrome           AppBar / PageView   (defined in Carbon.Style.css,
+                                                    kept here only as reference)
+   1.   In-page floating UI   Fab
+   2.   Scroll internals      scrollbar track / edge-glow
+                              (isolated *inside* their own scroll container -
+                              see the --scroll-container-zindex note below)
+   3.   Body-level overlays, lowest -> highest:
+          Drawer
+          ActionSheet
+          DialogSheet
+          DatePicker / TimePicker
+          Alert  (always wins - it's the "are you sure?" on top of everything)
+
+   Each overlay component gets its own 100-wide block (backdrop, then
+   content +1) so nothing ties with anything else, and there's room
+   to insert new components later without renumbering existing ones.
+========================================================= */
+
+:root {
+
+  /* ---- In-page floating UI --------------------------------------- */
+  --fab-zindex: 100;                 /* sits above AppBody content, below every overlay */
+
+  /* ---- Scroll internals -------------------------------------------
+     --scroll-container-zindex is applied to the *container itself*
+     (AppBody, a Drawer's inner scroll <div>, etc.) purely to give it
+     an explicit stacking context. Without this, position:relative
+     alone does NOT create one, so a child's high z-index (the glow/
+     scrollbar-track below) escapes into the parent's stacking
+     context and can paint over sibling chrome like AppBar or a
+     Drawer's close button. Giving the container its own context
+     traps the glow safely inside it - the value just needs to be a
+     real number (not `auto`), it does not need to be "high".        */
+  --scroll-container-zindex: 1;
+  --scroll-scrollbar-zindex: 5;
+  --scroll-glow-zindex: 6;
+
+  /* ---- Drawer (body-level overlay, block 9000) --------------------- */
+  --drawer-backdrop-zindex: 9000;
+  --drawer-zindex: 9001;
+
+  /* ---- ActionSheet (block 9100) ------------------------------------ */
+  --actionsheet-backdrop-zindex: 9100;
+  --actionsheet-zindex: 9101;
+
+  /* ---- DialogSheet (block 9200) ------------------------------------
+     Previously identical to ActionSheet's values (9998/9999), which
+     meant whichever opened last simply won by DOM order. Now on its
+     own tier so the two can never tie. */
+  --dialogsheet-backdrop-zindex: 9200;
+  --dialogsheet-zindex: 9201;
+
+  /* ---- DatePicker / TimePicker (block 9300) -------------------------
+     These render as plain positioned elements (no showModal() top-
+     layer call), so they must out-rank Drawer/ActionSheet/DialogSheet
+     to still work when opened from a field living inside one of them. */
+  --datepicker-zindex: 9300;
+  --timepicker-zindex: 9301;
+  /*----Select(block 9302)*/
+  --select-zindex:9302;
+
+  /* ---- Alert (block 9400) -------------------------------------------
+     Highest of the body-level overlays on purpose: a confirmation/
+     warning alert should never be able to end up trapped behind a
+     Drawer, sheet, or picker that triggered it. */
+  --alert-zindex: 9400;
+}

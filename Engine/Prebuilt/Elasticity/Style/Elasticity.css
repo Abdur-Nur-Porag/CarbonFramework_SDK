@@ -1,0 +1,19 @@
+/* Base styles required for the framework to work perfectly */
+[id^="item-"],
+.elastic-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transform-origin: top center;
+  overflow: hidden;
+  will-change: transform, border-radius;
+}
+
+/* The inner wrapper that we will 'un-stretch' */
+.elastic-content {
+  will-change: transform;
+  pointer-events: none;
+}

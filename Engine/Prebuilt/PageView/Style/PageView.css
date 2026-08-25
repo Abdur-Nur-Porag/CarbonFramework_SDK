@@ -1,0 +1,88 @@
+/* =========================================================
+   CARBON ROUTER — PAGE ANIMATIONS
+   
+   Performance notes
+   ─────────────────
+   • Only `transform` and `opacity` are animated — both are
+     compositor-only properties that never trigger layout or
+     paint, eliminating the main cause of jank / freeze-stop.
+   • `box-shadow` has been removed from keyframes entirely;
+     it is set as a static style on PageView elements instead
+     (zero animation cost).
+   • `will-change: transform` is declared on every PageView
+     so the browser promotes each page to its own GPU layer
+     before the animation starts, preventing the first-frame
+     stutter on low-end devices.
+   • Easing uses a custom cubic-bezier that mimics iOS/Android
+     native page transitions: fast start → smooth deceleration
+     with no hard snap at the end.
+========================================================= */
+
+/* ── GPU layer promotion ─────────────────────────────────
+   Apply to your PageView elements in your base stylesheet
+   or add [active] / always — whichever fits your markup.
+   This block covers the custom element tag used by Carbon. */
+PageView,
+pageview {
+  will-change: transform;
+  /* Static depth shadow — visible only when page is on top (z-index: 10).
+     Declared here, never animated, so it costs nothing per frame. */
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.08);
+  /* Ensure the GPU layer clips correctly */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* =========================================================
+   1. SLIDE IN  (Right → Left)
+   Use with OpenPageView. New page enters from the right.
+========================================================= */
+@keyframes SlideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0);    }
+}
+
+/* =========================================================
+   2. SLIDE OUT  (Left → Right)
+   Use with ClosePageView. Current page exits to the right.
+========================================================= */
+@keyframes SlideOut {
+  from { transform: translateX(0);    }
+  to   { transform: translateX(100%); }
+}
+
+/* =========================================================
+   3. SLIDE UP  (Bottom → Top)
+   Use with OpenPageView for bottom-sheet / modal entry.
+========================================================= */
+@keyframes SlideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0);    }
+}
+
+/* =========================================================
+   4. SLIDE DOWN  (Top → Bottom)
+   Use with ClosePageView. Page exits downward.
+========================================================= */
+@keyframes SlideDown {
+  from { transform: translateY(0);    }
+  to   { transform: translateY(100%); }
+}
+
+/* =========================================================
+   5. FADE IN
+   Use with OpenPageView.
+========================================================= */
+@keyframes FadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =========================================================
+   6. FADE OUT
+   Use with ClosePageView.
+========================================================= */
+@keyframes FadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

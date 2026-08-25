@@ -1,0 +1,60 @@
+:root {
+            
+  --dr-backdrop: rgba(0, 0, 0, 0.4);
+       --dr-transition: 0.5s cubic-bezier(0.05, 0.7, 0.1, 1);
+    --dr-width: 280px;
+            /* Standard Android Drawer Width */
+        }
+      
+        /* Prevent FOUC (Flash of Unstyled Content) */
+        Drawer { display: none; }
+
+        /* Shared Global Overlay */
+ .dr-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--dr-backdrop);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dr-transition); /* Match drawer speed perfectly */
+    z-index: var(--drawer-backdrop-zindex, 10000);
+    will-change: opacity; /* Tells the browser to hardware-accelerate this */
+    
+    /* REMOVED: backdrop-filter: blur(2px); */
+}
+        .dr-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .dr-wrapper {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: var(--dr-width);
+            max-width: 85vw; /* Ensure it doesn't cover the whole screen on tiny phones */
+            background: var(--surface);
+            z-index: var(--drawer-zindex, 10001);
+            /* Only animate transform. Animating `visibility` alongside transform
+               forces the compositor layer to be dropped/rebuilt mid-transition,
+               which caused the freeze -> move -> freeze stutter. The wrapper is
+               already fully off-screen via transform when inactive, so
+               visibility isn't needed to hide it. */
+            transition: transform var(--dr-transition);
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+            overflow-y: auto;
+        }
+
+        /* Positioning Logic */
+        .dr-left { 
+            left: 0; 
+            transform: translateX(-100%); 
+            border-radius: 0 16px 16px 0;
+        }
+        .dr-right { 
+            right: 0; 
+            transform: translateX(100%); 
+            border-radius: 16px 0 0 16px;
+        }
+
+        /* Active State */
+        .dr-wrapper.active { transform: translateX(0); }

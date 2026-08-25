@@ -1,0 +1,109 @@
+  :root {
+            /* Customize the Accordion Container */
+            --accordion-box-width: 600px;
+            --accordion-box-margin: 20px auto 40px auto;
+            --accordion-box-padding: 0 16px;
+            --accordion-default-gap: 12px;
+
+            /* Customize Individual Accordion Items */
+            --accordion-bg: #f3edf7;
+            --accordion-radius: 16px;
+            
+            /* Customize the Title */
+            --accordion-title-color: #1d1b20;
+            --accordion-title-pad: 16px 20px;
+            --accordion-title-font-size: 16px;
+            --accordion-title-hover-bg: rgba(29, 27, 32, 0.08);
+
+            /* Customize the Detail Area */
+            --accordion-detail-color: #49454f;
+            --accordion-detail-pad: 0 20px;
+            --accordion-detail-bottom-pad: 16px;
+
+            /* Customize the Icon */
+            --accordion-icon-color: #49454f;
+            --accordion-icon-size: 24px;
+        }
+    
+        /* Base reset */
+        Accordion, AccordionItem, AccordionItemTitle, AccordionItemDetail {
+            display: block;
+            box-sizing: border-box;
+            width: 100%; /* Ensure full width */
+        }
+
+        /* Container */
+        Accordion {
+            display: flex;
+            flex-direction: column;
+            gap: var(--accordion-default-gap);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: var(--accordion-box-width);
+            margin: var(--accordion-box-margin);
+            padding: var(--accordion-box-padding);
+        }
+
+        /* MD3 Surface */
+        AccordionItem {
+            display: flex;             /* FIXED: Added flex */
+            flex-direction: column;    /* FIXED: Force vertical stacking */
+            background-color: var(--accordion-bg); 
+            border-radius: var(--accordion-radius);
+            overflow: hidden;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Title Area */
+        AccordionItemTitle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--accordion-title-pad);
+            font-size: var(--accordion-title-font-size);
+            font-weight: 500;
+            color: var(--accordion-title-color);
+            user-select: none;
+            
+            transition: background-color 0.2s ease;
+        }
+
+        AccordionItemTitle:hover {
+            background-color: var(--accordion-title-hover-bg); 
+        }
+
+        /* Detail Area (Hidden via Grid Hack) */
+        AccordionItemDetail {
+            display: grid;
+            grid-template-rows: 0fr;
+            padding: var(--accordion-detail-pad);
+            color: var(--accordion-detail-color);
+            line-height: 1.5;
+            transition: grid-template-rows 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                        padding-bottom 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .detail-inner {
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* Active State */
+        AccordionItem[Active="true"] AccordionItemDetail {
+            grid-template-rows: 1fr;
+            padding-bottom: var(--accordion-detail-bottom-pad);
+        }
+
+        /* SVG Icon styling */
+        .accordion-icon {
+            width: var(--accordion-icon-size);
+            height: var(--accordion-icon-size);
+            fill: var(--accordion-icon-color);
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        AccordionItem[Active="true"] .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+  

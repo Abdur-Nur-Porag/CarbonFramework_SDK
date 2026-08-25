@@ -1,0 +1,29 @@
+{
+  "name": "01_Carbon_Framework",
+  "version": "3.2.0",
+  "description": "A UI library designed for Android App Development, providing a vast collection of prebuilt components, themes, and Material Design 3 widgets.",
+  "main": "CarbonCli.js",
+  "scripts": {
+    "sync": "node CarbonCli.js --sync",
+    "build": "node CarbonCli.js --carbon-framework --build",
+    "build:js": "node CarbonCli.js --build-js",
+    "build:css": "node CarbonCli.js --build-css",
+    "start": "node CarbonCli.js --sync && node LiveServer.js"
+  },
+  "dependencies": {
+  "express": "^4.18.2"
+},
+"devDependencies": {
+  "@babel/core": "^7.24.0",
+  "@babel/plugin-transform-react-jsx": "^7.24.0"
+},
+  "keywords": [
+    "carbon",
+    "framework",
+    "android",
+    "ui",
+    "material-design-3"
+  ],
+  "author": "Abdur Nur Porag",
+  "license": "ISC"
+}

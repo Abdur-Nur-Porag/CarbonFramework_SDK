@@ -1,0 +1,49 @@
+/* ── Z-Index (Engine/ZIndex/Style/ZIndex.css) ──
+   Select/MultipleSelect are mounted through the shared DialogSheet
+   overlay/wrapper, which by default paints its content at
+   --dialogsheet-zindex. That is too low for a field-triggered dropdown
+   that may itself live inside a Drawer/ActionSheet/DialogSheet, so its
+   ds-wrapper is re-targeted here to Select's own tier (--select-zindex).
+   The extra `.active` selector matches the specificity of
+   DialogSheet.css's own `.ds-wrapper.active` rule so this override
+   always wins regardless of CSS load order. */
+.ds-wrapper:has(.m3-dialog-list) {
+  z-index: var(--select-zindex, 9999);
+}
+.ds-wrapper.active:has(.m3-dialog-list) {
+  z-index: var(--select-zindex, 9999);
+}
+
+/* ── Select Item List ── */
+.m3-dialog-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.m3-dialog-list li {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.m3-dialog-list li:hover {
+  background: rgba(var(--primary-rgb, 103, 80, 164), 0.08);
+}
+
+.m3-dialog-list .space {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.select-item-text {
+  font-size: 1rem;
+  color: var(--on-surface);
+}
+
+/* ── Scrollbar hide utility ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

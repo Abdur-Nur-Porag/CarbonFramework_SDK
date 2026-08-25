@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Carbon :: Scroll
+   Handles ScrollBar / Type on scrollable containers, plus the optional
+   OverScrollEffect edge-glow (Android-style bounce) on the same element.
+   ========================================================================== */
+
+/* ==========================================================================
+   Carbon :: Scroll
+   Handles ScrollBar / Type on scrollable containers, plus the optional
+   OverScrollEffect edge-glow (Android-style bounce) on the same element.
+   ========================================================================== */
+
+[Type="VScroll"],
+[Type="HScroll"],
+[Type="Both"] {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+    /* IMPORTANT: this alone is what makes the scrollbar-track / edge-glow
+       below stay confined inside this element. JS also sets
+       position:relative on this element, but position alone does NOT
+       create a stacking context - z-index must be an explicit number.
+       Without this, a child's z-index:9999 escapes straight into the
+       *parent's* stacking context (e.g. AppBody's parent App, which uses
+       isolation:isolate) and competes directly against sibling chrome
+       like AppBar (z-index:10), painting over it. */
+    z-index: var(--scroll-container-zindex, 1);
+}
+[Type="HScroll"] {
+    display: flex;
+    flex-wrap: nowrap;
+}
+[Type="HScroll"] > * {
+    flex-shrink: 0;
+}
+
+/* ScrollBar="false" (default) hides the native scrollbar while keeping
+   the element scrollable. ScrollBar="true" leaves the browser default. */
+[Type][ScrollBar="false"],
+[Type]:not([ScrollBar]) {
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* old Edge / IE */
+}
+[Type][ScrollBar="false"]::-webkit-scrollbar,
+[Type]:not([ScrollBar])::-webkit-scrollbar {
+    display: none;               /* Chrome / Safari */
+    width: 0;
+    height: 0;
+}
+
+/* Custom Scrollbar Tracks - Material Design */
+.md-scrollbar-track {
+    position: absolute;
+    z-index: var(--scroll-scrollbar-zindex, 5);
+    background: rgba(0, 0, 0, 0.4); /* Material dark semi-transparent overlay */
+    border-radius: 0px;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Optional: Material Light Overlay for Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .md-scrollbar-track {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Hide Default Scrollbars */
+[ScrollBar="true"] {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    overflow: auto;
+    position: relative;
+}
+[ScrollBar="true"]::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   HScroll bar placement: shown AFTER the content, not on top of it.
+   The wrapper takes over the layout slot the element used to occupy, and
+   the track-wrap row is a real 6px-tall row below the scrollable content.
+   -------------------------------------------------------------------------- */
+.md-hscroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.md-hscroll-track-wrap {
+    position: relative;
+    width: 100%;
+    height: 6px; /* 4px bar + 2px top gap */
+    flex-shrink: 0;
+}
+
+/*********OverScrollEffect Code*************/
+
+.carbon-edge-glow {
+    position: absolute;
+    pointer-events: none;
+    z-index: var(--scroll-glow-zindex, 6);
+    opacity: 0;
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+/* Vertical Scrolling (Top/Bottom)
+   Symmetric 50% overhang on each side (left:-50%, width:200%) - this MUST
+   match CROSS_OVERHANG_RATIO in the JS. It keeps the dome perfectly centered
+   at rest, and lets a sideways drag slide the peak all the way to the
+   opposite edge while the taper reaches exactly zero at the near edge. */
+.carbon-edge-glow.top,
+.carbon-edge-glow.bottom {
+    left:-10%;
+    right:-50%;
+    width: 120%;
+    height: 20%;
+    border-radius: 0;
+}
+
+.carbon-edge-glow.top {
+    top: 0;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0,0 Q50,100 100,0 Z' fill='black'/></svg>");
+    -webkit-mask-size: 100% 100%;
+    transform-origin: top center;
+}
+
+.carbon-edge-glow.bottom {
+    bottom: 0;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0,100 Q50,0 100,100 Z' fill='black'/></svg>");
+    -webkit-mask-size: 100% 100%;
+    transform-origin: bottom center;
+}
+
+/* Horizontal Scrolling (Left/Right)
+   Same symmetric 50% overhang, on the vertical axis this time (top:-50%,
+   height:200%) - matches CROSS_OVERHANG_RATIO in the JS for the same reason. */
+.carbon-edge-glow.left,
+.carbon-edge-glow.right {
+    top: -10%;
+    bottom:-50%;
+    height: 120%;
+    width:20%;
+    border-radius: 0;
+}
+
+.carbon-edge-glow.left {
+    left: 0;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0,0 Q100,50 0,100 Z' fill='black'/></svg>");
+    -webkit-mask-size: 100% 100%;
+    transform-origin: center left;
+}
+
+.carbon-edge-glow.right {
+    right: 0;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M100,0 Q0,50 100,100 Z' fill='black'/></svg>");
+    -webkit-mask-size: 100% 100%;
+    transform-origin: center right;
+}

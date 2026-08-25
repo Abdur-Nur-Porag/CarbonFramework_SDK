@@ -1,0 +1,238 @@
+/* ── TimePicker CSS Variables ── */
+:root {
+  --clock-size: 256px;
+  --clock-hand-width: 2px;
+  --clock-hand-dot-size: 48px;
+  --clock-number-size: 40px;
+  --time-block-width: 96px;
+  --time-block-height: 80px;
+  --tp-transition-duration: 250ms;
+  --tp-transition-easing: cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+/* ── Z-Index (Engine/ZIndex/Style/ZIndex.css) ──
+   TimePicker is mounted through the shared DialogSheet overlay/wrapper,
+   which by default paints its content at --dialogsheet-zindex. That is
+   too low for a field-triggered picker that may itself live inside a
+   Drawer/ActionSheet/DialogSheet, so its ds-wrapper is re-targeted here
+   to TimePicker's own tier (--timepicker-zindex). The extra `.active`
+   selector matches the specificity of DialogSheet.css's own
+   `.ds-wrapper.active` rule so this override always wins regardless of
+   CSS load order. */
+.ds-wrapper:has(.clock-container) {
+  z-index: var(--timepicker-zindex, 9999);
+}
+.ds-wrapper.active:has(.clock-container) {
+  z-index: var(--timepicker-zindex, 9999);
+}
+
+/* ── Header ── */
+.time-picker-header {
+  color: var(--on-surface-variant);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  margin-bottom: 4px;
+}
+
+/* ── Digital Time Display ── */
+.time-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.time-block {
+  width: var(--time-block-width);
+  height: var(--time-block-height);
+  background-color: var(--surface-variant);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 57px;
+  color: var(--on-surface);
+  transition:
+    background-color var(--tp-transition-duration) var(--tp-transition-easing),
+    border-color     var(--tp-transition-duration) var(--tp-transition-easing),
+    color            var(--tp-transition-duration) var(--tp-transition-easing);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.time-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--on-surface);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.time-block:active::after { opacity: 0.12; }
+
+.time-block.active {
+  background-color: var(--primary-container);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.time-colon {
+  font-size: 57px;
+  color: var(--on-surface);
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* ── AM / PM Toggle ── */
+.ampm-toggle {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--outline, #79747E);
+  border-radius: 8px;
+  overflow: hidden;
+  height: var(--time-block-height);
+  width: 52px;
+  user-select: none;
+}
+
+.ampm-btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ampm-btn:first-child {
+  border-bottom: 1px solid var(--outline, #79747E);
+}
+
+.ampm-btn.active {
+  background-color: var(--tertiary-container);
+  color: var(--on-surface);
+}
+
+/* ── Clock Container ── */
+.clock-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.clock-face {
+  width: var(--clock-size);
+  height: var(--clock-size);
+  background-color: var(--surface-variant);
+  border-radius: 50%;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Center dot */
+.clock-center {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Clock hand */
+.clock-hand-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  transition:
+    transform var(--tp-transition-duration) var(--tp-transition-easing),
+    width     var(--tp-transition-duration) var(--tp-transition-easing);
+  transform-origin: 0% 50%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Disable transition while actively dragging for instant feedback */
+.clock-face.dragging .clock-hand-wrapper,
+.clock-face.dragging .clock-hand-text {
+  transition: none !important;
+}
+
+.clock-hand-line {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: var(--clock-hand-width);
+  background-color: var(--primary);
+}
+
+.clock-hand-circle {
+  position: absolute;
+  right: -24px;
+  top: -24px;
+  width: var(--clock-hand-dot-size);
+  height: var(--clock-hand-dot-size);
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock-hand-text {
+  color: var(--on-primary);
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform var(--tp-transition-duration) var(--tp-transition-easing);
+}
+
+/* Clock numbers */
+.clock-numbers-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.clock-number {
+  position: absolute;
+  width: var(--clock-number-size);
+  height: var(--clock-number-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: var(--on-surface);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Invisible full-circle touch/mouse capture area */
+.touch-target {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+:Package
+  :Script
+    :Carbon.MaterialDesign
+      - Carbon.MaterialDesign.js
+    :Carbon.Fetch
+      - Carbon.Fetch.js
+    :Carbon.IndexedDb
+      - Carbon.IndexedDb.js
+  :Style
+    :Carbon.MaterialDesign
+      - Carbon.MaterialDesign.css

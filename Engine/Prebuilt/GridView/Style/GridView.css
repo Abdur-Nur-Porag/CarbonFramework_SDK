@@ -1,0 +1,28 @@
+GridView {
+  display: grid !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+GridView > * {
+  box-sizing: border-box;
+  margin: 0 !important;
+  min-width: 0;
+  min-height: 0; /* Prevents overflow in row-spanning cells */
+}
+
+ColumnSpan {
+  display: block;
+  width: 100%;
+}
+
+RowSpan {
+  display: block;
+  height: 100%;
+}
+
+GridSpan {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

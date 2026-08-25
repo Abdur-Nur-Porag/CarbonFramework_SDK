@@ -1,0 +1,327 @@
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  touch-action: pan-x pan-y;
+}
+
+/* Re-enable selection ONLY where users legitimately need it
+   (inputs, textareas, contenteditable) */
+input, textarea, [contenteditable="false"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+a, button {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  pointer-events: none; /* remove this line if any <img> is clickable/a link */
+}
+
+label{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+div{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+li{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+ol{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+ul{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+span{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+.safe-content{
+    -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+
+h1{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+h2{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+h3{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+h4{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+h5{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+h6{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+h7{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+p{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+table{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+tr{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+td{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+
+th{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+
+footer{
+      -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+    -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+
+
+
+
+
+
+
+
+/* Safe-area padding so content isn't hidden by notches/home-indicator */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Focus rings only for keyboard nav, not touch taps */
+:focus:not(:focus-visible) { outline: none; }
+
+/* Smooth scroll containers feel native */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+
+

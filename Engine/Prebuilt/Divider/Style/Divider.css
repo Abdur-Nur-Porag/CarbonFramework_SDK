@@ -1,0 +1,40 @@
+/* Base styles for the divider container */
+        DividerBody {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 30px 0;
+            color: #555;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Create the lines using pseudo-elements */
+        DividerBody::before,
+        DividerBody::after {
+            content: '';
+            flex: 1;
+            height: 0px;
+            /* Default line style */
+            border-bottom: 2px solid #ccc;
+        }
+
+        /* Logic for different "type" attributes */
+        DividerBody[type="dash"]::before,
+        DividerBody[type="dash"]::after {
+            border-bottom-style: dashed;
+        }
+
+        DividerBody[type="dot"]::before,
+        DividerBody[type="dot"]::after {
+            border-bottom-style: dotted;
+            border-bottom-width: 3px; /* Dots look better slightly thicker */
+        }
+
+        /* Styling the text element */
+        DividerText {
+            padding: 0 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }

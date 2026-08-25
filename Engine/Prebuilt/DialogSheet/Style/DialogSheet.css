@@ -1,0 +1,74 @@
+:root {
+  --ds-backdrop: rgba(0, 0, 0, 0.4);
+  --ds-transition: 0.3s cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ds-radius: 16px;
+}
+
+/* Prevent layout shift before JS runs (support both cases) */
+dialogsheet, DialogSheet { display: none; }
+
+.ds-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--ds-backdrop);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: var(--dialogsheet-backdrop-zindex, 9998);
+  will-change: opacity;
+
+  /* CHANGED: Use Grid instead of Flexbox to stack multiple dialogs */
+  display: grid;
+  place-items: center;
+  
+  padding: 24px;
+  box-sizing: border-box;
+}
+.ds-overlay.active { 
+  opacity: 1; 
+  pointer-events: auto; 
+}
+
+.ds-wrapper {
+  /* CHANGED: Forces all multiple open dialogs to sit in the exact same center spot */
+  grid-area: 1 / 1; 
+  
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: var(--surface, #ffffff); /* Added fallback color */
+  border-radius: var(--ds-radius);
+  z-index: var(--dialogsheet-zindex, 9999);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  /* Scale + fade instead of slide */
+  opacity: 0;
+  transform: scale(0.92);
+  transition: transform var(--ds-transition), opacity var(--ds-transition);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.ds-wrapper.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  /* Optional: Boosts z-index of the topmost dialog so it sits above others */
+  z-index: calc(var(--dialogsheet-zindex, 9999) + 1); 
+}
+
+/* Size variants */
+.ds-small { max-width: 320px; }
+.ds-medium { max-width: 420px; }
+.ds-large { max-width: 640px; }
+.ds-fullscreen {
+  max-width: 100%;
+  width: 100%;
+  height: calc(100vh - 48px);
+  max-height: calc(100vh - 48px);
+  border-radius: var(--ds-radius);
+}

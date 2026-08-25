@@ -1,0 +1,59 @@
+/* =========================================================
+     <NativeButton> — custom tag, div-based, styled like the
+     stock Android View system Button (AppCompat, not Material,
+     not Compose). Supports class / id / style / any attribute
+     since it's a plain HTML element under the hood.
+     ========================================================= */
+nativebutton {
+  /* layout, since this is not a real <button>/<div> by default */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  cursor: pointer;
+  
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
+  
+  padding: 0 16px;
+  height: 36px;
+  min-width: 88px;
+  
+  border-radius: 2px;
+  background-color: #F1F1F1;
+  
+  /* subtle default elevation, like Android's built-in Button shadow */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  
+  transition: box-shadow 100ms linear, background-color 100ms linear;
+}
+
+nativebutton:hover {
+  background-color: #E8E8E8;
+}
+
+/* pressed state — applied via JS as a class since :active on
+     non-form elements is inconsistent across touch/mouse */
+nativebutton.nb-pressed {
+  background-color: #DCDCDC;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+nativebutton[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #BDBDBD;
+  background-color: #F5F5F5;
+  box-shadow: none;
+}
+
+nativebutton:focus-visible {
+  outline: 2px solid #1A73E8;
+  outline-offset: 2px;
+}

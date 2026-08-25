@@ -1,0 +1,217 @@
+[v-cloak] { display: none; }
+
+:root {
+  --primary: var(--primary);
+  --secondary: var(--secondary);
+  --surface: #ffffff;
+
+  /* =========================================================
+     SHADOW SCALE (downward — for AppBar / top edges)
+  ========================================================= */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 1px 3px rgba(0, 0, 0, 0.10),
+              0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 2px 4px rgba(0, 0, 0, 0.12),
+              0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-4: 0 4px 6px rgba(0, 0, 0, 0.14),
+              0 2px 4px rgba(0, 0, 0, 0.10);
+
+  /* =========================================================
+     SHADOW SCALE (upward — for BottomBar / bottom edges)
+  ========================================================= */
+  --shadow-0-up: none;
+  --shadow-1-up: 0 -1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2-up: 0 -1px 3px rgba(0, 0, 0, 0.10),
+                 0 -1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-3-up: 0 -2px 4px rgba(0, 0, 0, 0.12),
+                 0 -1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-4-up: 0 -4px 6px rgba(0, 0, 0, 0.14),
+                 0 -2px 4px rgba(0, 0, 0, 0.10);
+}
+
+
+.html-layer { 
+  pointer-events: auto; 
+  position: absolute; 
+  box-sizing: border-box; 
+  transform-style: preserve-3d;
+  will-change: transform, opacity, box-shadow;
+}
+pixelengine {
+  display: block; width: 100%; height: 100%; position: relative;
+}
+.engine-wrapper {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+        
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overscroll-behavior-y: none; 
+}
+/* =========================================================
+   PAGE VIEW ROOT (GHOST VIEW SAFE)
+========================================================= */
+pageview, PageView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  display: none; 
+  z-index: 1;
+  /* Hardware acceleration for smoother animations */
+  transform: translateZ(0); 
+  will-change: transform, opacity;
+}
+pageview[active="true"], 
+PageView[active="true"] {
+  display: block !important;
+  /* Baseline z-index when active, JS handles overlaying during transition */
+  z-index: 5; 
+}
+/* =========================================================
+   APP ROOT & LAYOUT
+========================================================= */
+App {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  width: var(--app-width, 100%);
+  height: var(--app-height, 100%);
+  min-width: 0;
+  min-height: 0;
+}
+
+
+AppBar {
+  position: absolute;      /* ✅ CHANGED: was a flex sibling — now overlays AppBody */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  min-height: 0;
+  background: var(--surface); /* explicit default — non-transparent unless Type="Transparent" */
+  box-shadow:var(--shadow-2);
+}
+
+/* Type="Transparent" — see-through AppBar (e.g. over a hero image or
+   scrolled content). Case-insensitive so Type="Transparent",
+   Type="transparent", etc. all work. AppBody automatically stops
+   reserving space for it (see Carbon.BarSpacer.js), so scrolled content
+   is visible directly through it. */
+AppBar[type="transparent" i] {
+  background: transparent;
+  box-shadow: none;
+}
+
+BottomBar {
+  position: absolute;      /* ✅ CHANGED: was a flex sibling — now overlays AppBody */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--surface);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.12),
+              0 -1px 2px rgba(0, 0, 0, 0.08);
+
+}
+
+/* Type="Transparent" — see-through BottomBar, same behavior as AppBar. */
+BottomBar[type="transparent" i] {
+  background: transparent;
+  box-shadow: none;
+}
+
+BottomBar[hidden="true"] {
+  display: none;
+}
+AppBody {
+  position: absolute;      /* ✅ CHANGED: was position:relative; flex:1 */
+  inset: 0;                /* fills the ENTIRE App container, top to bottom */
+  /* Reserves space for AppBar/BottomBar so content starts below/above
+     them by default — set live by Carbon.BarSpacer.js, which measures
+     each bar's real height and zeroes this out when the bar is
+     Type="Transparent", letting content scroll fully behind it. */
+  padding-top: var(--appbar-space, 0px);
+  padding-bottom: var(--bottombar-space, 0px);
+  min-height: 0;
+  min-width: 0;
+  scrollbar-gutter: auto; 
+  overflow-x: hidden;
+  overflow-y: auto; 
+  overflow-y: overlay; 
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.10s ease, padding 0.15s ease;
+}
+AppBody[type="vscroll"] {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-y: overlay;
+}
+AppBody[type="hscroll"] {
+  overflow-x: auto;
+  overflow-x: overlay;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+AppBody[type="both"] {
+  overflow-x: auto;
+  overflow-x: overlay;
+  overflow-y: auto;
+  overflow-y: overlay;
+}
+AppBody[type="none"] {
+  overflow: hidden;
+}
+AppBody[scrollbar="false"] {
+  scrollbar-width: none;
+}
+AppBody[scrollbar="false"]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+@media (pointer: fine) {
+  AppBody::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+  AppBody::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  AppBody::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 999px;
+  }
+  AppBody.scrolling::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  AppBody::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.45) !important;
+  }
+}
+AppBody.scrolling {
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
