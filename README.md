@@ -119,7 +119,8 @@ Carbon Framework includes several prebuilt bridges. You can find them all in the
 
 ```json
 "dependencies": {
-  "express": "^4.18.2"
+  "express": "^4.18.2",
+  "adm-zip": "^0.5.10"
 },
 "devDependencies": {
   "@babel/core": "^7.24.0",
@@ -175,6 +176,44 @@ Here is tutorial series serially. Read that.
 	1. [Switch](Example/Component/md/Switch.md)
 	2. [ListItem](Example/Component/md/ListItem)
 ---
+## CarbonCli
+This is core tool for all building process. It is common in both `CarbonFramework_SDK` and `CarbonFramework_WDK`.
+
+
+| Name                       | Definition                                  | Alternative Cli   | Example                                   |
+| -------------------------- | ------------------------------------------- | ----------------- | ----------------------------------------- |
+| --carbon-framework --build | To bundle js,css,html in index.html         | npm run build     | node CarbonCli --carbon-framework --build |
+| --build-css                | To bundle all css in single file            | npm run build:css | node CarbonCli --build-css                |
+| --build-js                 | To bundle all js in single file             | npm run build:js  | node CarbonCli --build-js                 |
+| --build-json               | It makes combined.json                      | X                 | node CarbonCli --build-json               |
+| --sync                     | To make sync whole project after any change | X                 | node CarbonCli --sync                     |
+| --enc <key>                | To encrypt index.html                       | X                 | node CarbonCli --enc 123ABCDfgh           |
+| --show-package             | This show Carbon.package                    | X                 | node CarbonCli --show-package             |
+| --show-build               | This show Carbon.build                      | X                 | node --CarbonCli --show-build             |
+| --show-main                | This show Carbon.main                       | X                 | node CarbonCli --show-main                |
+|                            |                                             |                   |                                           |
+### Package Installation
+```bash
+node CarbonCli --install --package <type> <name>
+```
+
+| Type | Syntex | Example                                        |
+| ---- | ------ | ---------------------------------------------- |
+| js   | --js   | node CarbonCli --install --package --js bulma  |
+| css  | --css  | node CarbonCli --install --package --css bulma |
+
+#### Remove Package
+```bash
+node CarbonCli --remove --package <type> <name>
+```
+
+| Type | Syntex | Example                                       |
+| ---- | ------ | --------------------------------------------- |
+| js   | --js   | node CarbonCli --remove --package --js bulma  |
+| css  | --css  | node CarbonCli --remove --package --css bulma |
+
+
+
 
 ## FAQ
 
@@ -199,3 +238,5 @@ Use one of these instead of a direct Vue directive:
 - A global event bus
 - A `window`-level function
 - Carbon's own built-in API for communicating with global components
+### When I use ActionSheet/Drawer/DialogSheet is see a black shodow in bottom/left
+Short Answer: Yes, That is right. To fix it use attribute  ` Elevation="0" `. Because there is default `Elevation="2"` is already set.

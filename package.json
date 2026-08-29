@@ -1,6 +1,6 @@
 {
-  "name": "01_Carbon_Framework",
-  "version": "3.2.0",
+  "name": "Carbon Framework SDK",
+  "version": "1.0.0",
   "description": "A UI library designed for Android App Development, providing a vast collection of prebuilt components, themes, and Material Design 3 widgets.",
   "main": "CarbonCli.js",
   "scripts": {
@@ -11,7 +11,9 @@
     "start": "node CarbonCli.js --sync && node LiveServer.js"
   },
   "dependencies": {
-  "express": "^4.18.2"
+  "express": "^4.18.2",
+  "adm-zip": "^0.5.10"
+  
 },
 "devDependencies": {
   "@babel/core": "^7.24.0",
@@ -20,6 +22,7 @@
   "keywords": [
     "carbon",
     "framework",
+    "sdk",
     "android",
     "ui",
     "material-design-3"
