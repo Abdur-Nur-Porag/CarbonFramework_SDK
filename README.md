@@ -1,4 +1,4 @@
-# Carbon Framework SDK — Documentation
+# Carbon Framework SDK
 
 > A JavaScript UI framework for building Progressive Web Apps (PWAs) and mobile apps.
 
