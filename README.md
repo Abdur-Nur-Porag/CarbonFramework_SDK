@@ -238,5 +238,5 @@ Use one of these instead of a direct Vue directive:
 - A global event bus
 - A `window`-level function
 - Carbon's own built-in API for communicating with global components
-### When I use ActionSheet/Drawer/DialogSheet is see a black shodow in bottom/left
+### When I use ActionSheet/Drawer/DialogSheet is see a black shadow in bottom/left
 Short Answer: Yes, That is right. To fix it use attribute  ` Elevation="0" `. Because there is default `Elevation="2"` is already set.
