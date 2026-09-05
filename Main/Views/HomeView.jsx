@@ -1,4 +1,4 @@
-import {ListItem} from "./Com/List.jsx";
+import {ListItem} from "./Com/ListItem.jsx";
 import {Switch} from "./Com/Switch.jsx";
 
 

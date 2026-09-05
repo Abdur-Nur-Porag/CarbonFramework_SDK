@@ -13,7 +13,7 @@
     - HomeView.jsx
     :Com
       - NativeButton.jsx
-      - List.jsx
+      - ListItem.jsx
       - Switch.jsx
   :PostScript
     - PixelGrid.js

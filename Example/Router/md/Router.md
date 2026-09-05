@@ -88,7 +88,13 @@ This is a important things that developers must know. There is a logic
 `if(InitialPageView.value==_CurrentPageView)` app will kill.
 So if you want to change initial pageview use 
 ```js
-InitialPageView.value = "pageview_"+"name";
+InitialPageView.value = "PageViewName";
+/*
+Example
+InitialPageView.value = "DashboardView";
+
+
+*/
 ```
 This is `ref` name of Vue you can change it any time dynamically.
 

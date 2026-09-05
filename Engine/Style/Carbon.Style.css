@@ -98,7 +98,14 @@ App {
 
 
 AppBar {
-  position: absolute;      /* ✅ CHANGED: was a flex sibling — now overlays AppBody */
+   /*
+   Remember when you use 
+   <AppBar Type="Transparent"></AppBar>
+   add here css attribute:
+   -----
+   position: absolute;
+   -----
+   */
   top: 0;
   left: 0;
   right: 0;
@@ -119,7 +126,14 @@ AppBar[type="transparent" i] {
 }
 
 BottomBar {
-  position: absolute;      /* ✅ CHANGED: was a flex sibling — now overlays AppBody */
+   /*
+   Remember when you use 
+   <BottomBar Type="Transparent"></BottomBar>
+   add here css attribute:
+   -----
+   position: absolute;
+   -----
+   */
   bottom: 0;
   left: 0;
   right: 0;
@@ -128,7 +142,7 @@ BottomBar {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: var(--surface);
+  background:transparent;
   padding-bottom: env(safe-area-inset-bottom, 0px);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.12),
               0 -1px 2px rgba(0, 0, 0, 0.08);
@@ -145,14 +159,8 @@ BottomBar[hidden="true"] {
   display: none;
 }
 AppBody {
-  position: absolute;      /* ✅ CHANGED: was position:relative; flex:1 */
-  inset: 0;                /* fills the ENTIRE App container, top to bottom */
-  /* Reserves space for AppBar/BottomBar so content starts below/above
-     them by default — set live by Carbon.BarSpacer.js, which measures
-     each bar's real height and zeroes this out when the bar is
-     Type="Transparent", letting content scroll fully behind it. */
-  padding-top: var(--appbar-space, 0px);
-  padding-bottom: var(--bottombar-space, 0px);
+  position: relative;
+  flex: 1;
   min-height: 0;
   min-width: 0;
   scrollbar-gutter: auto; 
@@ -161,7 +169,7 @@ AppBody {
   overflow-y: overlay; 
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
-  transition: scrollbar-color 0.10s ease, padding 0.15s ease;
+  transition: scrollbar-color 0.10s ease;
 }
 AppBody[type="vscroll"] {
   overflow-x: hidden;
